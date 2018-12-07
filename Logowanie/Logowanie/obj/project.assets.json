@@ -12634,11 +12634,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dżesika\\Documents\\GitHub\\TiTS\\Logowanie\\Logowanie\\Logowanie.csproj",
+      "projectUniqueName": "C:\\Users\\Dżesika\\Documents\\GitHub\\Ekartoteka\\Logowanie\\Logowanie\\Logowanie.csproj",
       "projectName": "Logowanie",
-      "projectPath": "C:\\Users\\Dżesika\\Documents\\GitHub\\TiTS\\Logowanie\\Logowanie\\Logowanie.csproj",
+      "projectPath": "C:\\Users\\Dżesika\\Documents\\GitHub\\Ekartoteka\\Logowanie\\Logowanie\\Logowanie.csproj",
       "packagesPath": "C:\\Users\\Dżesika\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dżesika\\Documents\\GitHub\\TiTS\\Logowanie\\Logowanie\\obj\\",
+      "outputPath": "C:\\Users\\Dżesika\\Documents\\GitHub\\Ekartoteka\\Logowanie\\Logowanie\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
