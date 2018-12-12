@@ -58,6 +58,23 @@ namespace Logowanie.Controllers
             return View();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId,string token)
+        {
+            if(userId==null || token == null)
+            {
+                return View("Error");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -70,11 +87,23 @@ namespace Logowanie.Controllers
                 var result = await _userManager.CreateAsync(user, model.Hasło);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+
+                    string ctoken = _userManager.GenerateEmailConfirmationTokenAsync(user).Result;
+                    string ctokenlink = Url.Action("ConfirmEmail", "Account", new
+                    {
+                        userId = user.Id,
+                        token = ctoken
+                    },protocol: HttpContext.Request.Scheme);
+                    ViewBag.token = ctokenlink;
+
+
+
+                    
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    return View(model);
                 }
                 AddErrors(result);
             }
